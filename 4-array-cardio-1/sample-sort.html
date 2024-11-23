@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sort</title>
+</head>
+<body>
+    <script>
+        const test = [1, 10, 2, 5, 8, 3, 4, 7, 6, 9];
+        console.log(test.sort((a, b) => a - b));
+
+        const people = {
+            name: 'Wes Bos',
+            age: 100
+        };
+
+        console.log(people['name']);
+        people['name'] = 'Wesley Bos';
+        console.log(people['name']);
+
+        console.log(people['address']);
+        people['address'] = '123 Main St';
+        console.log(people['address']);
+
+        people['age']++;
+        console.log(people);
+
+        if (!undefined) {
+            console.log('undefined is true');
+        } else {
+            console.log('undefined is false');
+        }
+
+        const data = {};
+        console.log(data);
+        item = 'car';
+        data[item] = 100;
+        console.log(data);
+
+        data[item] = 0;
+        console.log(data);
+
+        data[item]++;
+        console.log(data);
+
+        console.log('----------------------------------------');
+        const dataList = ['car', 'car', 'trunk'];
+        const dataObj = {};
+        // dataObj[dataList[0]] = 0;
+        // dataObj[dataList[1]] += 5;
+        // console.log(dataObj);
+
+
+        dataList.forEach(item => {
+            console.log(item);
+            if (!dataObj[item]) {
+                console.log(item + ': not exist');
+                dataObj[item] = 0;
+            } else {
+                dataObj[item] += 1;
+            }
+        });
+        console.log(dataObj);
+    </script>
+</body>
+</html>
