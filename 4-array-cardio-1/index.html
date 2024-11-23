@@ -39,22 +39,26 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-    const bornIn1500s = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1600);
+    const bornIn1500s = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
+    console.log('1. Filter the list of inventors for those who were born in the 1500\'s');
     console.log(bornIn1500s);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
     const fullNameArr = inventors.map(inventor => [inventor.first, inventor.last]);
+    console.log('2. Give us an array of the inventors first and last names');
     console.log(fullNameArr);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-    const sortByYear = inventors.sort((a, b) => a.year - b.year);
+    const sortByYear = [...inventors].sort((a, b) => a.year - b.year);
+    console.log('3. Sort the inventors by birthdate, oldest to youngest');
     console.log(sortByYear);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
     const totalLived = inventors.reduce((sum, inventor) => sum + inventor.passed - inventor.year, 0);
+    console.log('4. How many years did all the inventors live all together?');
     console.log(totalLived);
 
     // 5. Sort the inventors by years lived
@@ -70,29 +74,27 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-    const category = [
-        'Avenue des Champs-Élysées',
-        'Avenue des Invalides',
-        'Boulevard de Courcelles',
-        'Boulevard des Batignolles',
-        'Boulevard de Rochechouart',
-        'Boulevard de Sébastopol',
-        'Boulevard de Strasbourg',
-        'Boulevard de la Chapelle',
-        'Boulevard de Belleville',
-        'Boulevard de Bercy',
-        "Boulevard de l'Hôpital'",
-        'Boulevard des Capucines',
-        'Boulevard des Italiens',
-        'Boulevard des Filles du Calvaire'
-    ];
+    /*
+        1. Open the link above
+        2. Inspect the <a> tags,
+        3. Find the parent element that contains the <a> tags
+        4. `const category = document.querySelector('') to get the parent element`
+        5. `const links = [...category.querySelectorAll('a')]`
+        6. `const de = links.map(link => link.textContent).filter(streetName => streetName.includes('de'))`
+     */
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    const sortedPeople = people.map(person => person.split(', '))
-        .sort((a, b) => a[1].localeCompare(b[1]))
-        .map(nameArr => nameArr.join(', '));
+    // const sortedPeople = people.map(person => person.split(', '))
+    //     .sort((a, b) => a[1].localeCompare(b[1]))
+    //     .map(nameArr => nameArr.join(', '));
+    const sortedPeople = people.sort((a, b) => {
+        const [aFirst, aLast] = a.split(', ');
+        const [bFirst, bLast] = b.split(', ');
+        return aLast.localeCompare(bLast);
+    });
+    console.log('7. Sort the people alphabetically by last name');
     console.log(sortedPeople);
 
     // 8. Reduce Exercise
@@ -105,6 +107,7 @@
         counter[item]++;
         return counter;
     }, {});
+    console.log('8. Sum up the instances of each of these');
     console.log(dataCount);
 </script>
 </body>
