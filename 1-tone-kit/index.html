@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+    <link rel="stylesheet" href="style.css">
     <script src="http://unpkg.com/tone"></script>
 </head>
 <body>
@@ -47,15 +48,25 @@
         window.addEventListener('keydown', async event => {
             await Tone.start();
 
-            const divKey = document.querySelector(`div[data-key=${event.key.toLowerCase()}]`);
-            if (divKey) {
-                play(divKey.dataset.note);
+            const box = document.querySelector(`div[data-key=${event.key.toLowerCase()}]`);
+            if (box) {
+                play(box);
             }
         });
 
-        function play(note) {
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+
+        function play(element) {
+            element.classList.add('playing');
+
             const synth = new Tone.PolySynth(Tone.Synth).toDestination();
-            synth.triggerAttackRelease(note, '8n');
+            synth.triggerAttackRelease(element.dataset.note, '8n');
+        }
+
+        function removeTransition(event) {
+            if (event.propertyName !== 'transform') return;
+            this.classList.remove('playing');
         }
 
     </script>
