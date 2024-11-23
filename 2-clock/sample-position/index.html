@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position</title>
+  <style>
+    html {
+      font-family: 'helvetica neue', serif;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      height: 300px;
+      align-content: center;
+    }
+
+    .item {
+        background: gray;
+        border: 1px solid black;
+        width: 60px;
+        height: 60px;
+    }
+
+    .item-2 {
+      top: 20px;
+      right: 30px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item item-1">Hello</div>
+    <div class="item item-2">World</div>
+    <div class="item item-3">Foo</div>
+  </div>
+
+  <div class="container">
+    <div class="item item-4">AAAA</div>
+    <div class="item item-5">BBBB</div>
+    <div class="item item-6">CCCC</div>
+  </div>
+</body>
+</html>
