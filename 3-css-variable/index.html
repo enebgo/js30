@@ -10,16 +10,42 @@
 
     <div class="controls">
         <label for="spacing">Spacing:</label>
-        <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+        <input id="spacing" class="control-input" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
         <label for="blur">Blur:</label>
-        <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+        <input id="blur" class="control-input" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
 
         <label for="base">Base Color</label>
-        <input id="base" type="color" name="base" value="#ffc600">
+        <input id="base" class="control-input" type="color" name="base" value="#ffc600">
     </div>
 
     <img src="carlos-machado-L1EGIaIY9yk-unsplash.jpg" alt="" width="50%" height="50%">
 
+    <script>
+        const inputs = document.querySelectorAll('.controls input');
+
+        // inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        // inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+        const controlContainer = document.querySelector('.controls');
+        controlContainer.addEventListener('change', event => {
+            console.log(event.target);
+            if (event.target.classList.contains('control-input')) {
+                handleUpdate(event);
+            }
+        })
+
+        controlContainer.addEventListener('mousemove', event => {
+            console.log(event.target);
+            if (event.target.classList.contains('control-input')) {
+                handleUpdate(event);
+            }
+        })
+
+        function handleUpdate(event) {
+            const suffix = event.target.dataset.sizing ?? '';
+            document.documentElement.style.setProperty(`--${event.target.name}`, `${event.target.value}${suffix}`);
+        }
+    </script>
 </body>
 </html>
