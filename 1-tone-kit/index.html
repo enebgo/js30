@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+
+    <div class="keys">
+        <div data-key="q" data-note="C4" class="key">
+            <kbd>Q</kbd>
+            <span class="sound">Do</span>
+        </div>
+        <div data-key="w" data-note="D4" class="key">
+            <kbd>W</kbd>
+            <span class="sound">Re</span>
+        </div>
+        <div data-key="e" data-note="E4" class="key">
+            <kbd>E</kbd>
+            <span class="sound">Mi</span>
+        </div>
+        <div data-key="r" data-note="F4" class="key">
+            <kbd>R</kbd>
+            <span class="sound">Fa</span>
+        </div>
+        <div data-key="s" data-note="G4" class="key">
+            <kbd>S</kbd>
+            <span class="sound">Sol</span>
+        </div>
+        <div data-key="d" data-note="A4" class="key">
+            <kbd>D</kbd>
+            <span class="sound">La</span>
+        </div>
+        <div data-key="f" data-note="B4" class="key">
+            <kbd>F</kbd>
+            <span class="sound">Ti</span>
+        </div>
+        <div data-key="g" data-note="C5" class="key">
+            <kbd>G</kbd>
+            <span class="sound">Do</span>
+        </div>
+    </div>
+
+    <script>
+        // 科学音律记号系统 C4 = do D4 = re E4 = mi F4 = fa G4 = so A4 = la B4 = ti C5 = do
+        window.addEventListener('keydown', async event => {
+            await Tone.start();
+
+            const divKey = document.querySelector(`div[data-key=${event.key.toLowerCase()}]`);
+            if (divKey) {
+                play(divKey.dataset.note);
+            }
+        });
+
+        function play(note) {
+            const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+            synth.triggerAttackRelease(note, '8n');
+        }
+
+    </script>
+</body>
+</html>
