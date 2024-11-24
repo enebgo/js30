@@ -41,10 +41,21 @@
         // Array.prototype.findIndex()
         // Find the comment with this ID
         // delete the comment with the ID of 823423
-        const deleteResult = comments.splice(comments.findIndex(comment => comment.id === 823423), 1);
-        console.log('Deleted comment with ID of 823423:', deleteResult);
-        console.log('Remaining comments:', comments);
+        // const deleteResult = comments.splice(comments.findIndex(comment => comment.id === 823423), 1);
+        // console.log('Deleted comment with ID of 823423:', deleteResult);
 
+        // const newComments = [
+        //         ...comments.slice(0, comments.findIndex(comment => comment.id === 823423)),
+        //         ...comments.slice(comments.findIndex(comment => comment.id === 823423) + 1)
+        // ];
+        // console.table(newComments);
+
+        const newComments = [...comments];
+        const index = newComments.findIndex(comment => comment.id === 823423);
+        newComments.splice(index, 1);
+        console.table(newComments);
+        console.log('Remaining comments:');
+        console.table(comments);
     </script>
 </body>
 </html>
