@@ -17,7 +17,7 @@ input {
 
 .search-form {
     max-width: 400px;
-    margin: 20px auto;
+    margin: 50px auto;
 }
 
 input.search {
@@ -26,6 +26,7 @@ input.search {
     outline: 0;
     border: 10px solid #F7F7F7;
     width: 120%;
+    left: -10%;
     position: relative;
     top: 10px;
     z-index: 2;
